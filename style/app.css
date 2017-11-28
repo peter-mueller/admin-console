@@ -34,13 +34,19 @@ body {
     }
 
     #header {
+        display: flex;
+        flex-direction: row;
         grid-area: header;
         background-color: #0e4ead;
         color: white;
-        padding-left: 1rem;
         height: 48px;
+        align-items: flex-end;
     }
-    
+
+    #header h2 {
+        margin: 0 1rem;
+    }
+
     #nav {
         grid-area: nav;
         display: flex;
