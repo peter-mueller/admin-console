@@ -1,0 +1,46 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Current Users</title>
+    <meta name="description" content="Active User List (Administration)">
+  
+    <link rel="stylesheet" href="../style/app.css">
+    <script type="module" src="./view/user-list.js"></script>
+    
+</head>
+
+<body>
+        <div id="header">
+                <h2>ADMIN CONSOLE</h2>
+            </div>
+        
+            <nav id="nav">
+                <a href="/">Home</a>
+                <a href="/user/">User</a>
+                <a href="/count/">Count</a>
+                <a href="/trace/">Trace</a>
+            </nav>
+
+    <div id="main">
+        <h3>User List</h3>
+        <user-list id="list"></user-list>
+    </div>
+
+    <script type="module">
+        import { UserClient } from './driver/rest.js';
+
+        const list = document.querySelector('#list');
+        list.users = [
+        { name: 'Peter' },
+        { name: 'Christian' },
+        { name: 'Andreas' },
+        { name: 'Markus' },
+    ];
+    </script>
+</body>
+
+</html>

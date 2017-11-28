@@ -1,0 +1,88 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Admin Console</title>
+    <meta name="description" content="Administration Console for the Chat Server">
+
+    
+    <link rel="stylesheet" href="./style/app.css">
+    <link rel="stylesheet" href="node_modules/material-components-web/dist/material-components-web.css">
+
+    <style>
+        #controls {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        button {
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <h2>ADMIN CONSOLE</h2>
+    </div>
+
+    <nav id="nav">
+        <a href="/">Home</a>
+        <a href="/user/">User</a>
+        <a href="/count/">Count</a>
+        <a href="/trace/">Trace</a>
+    </nav>
+    
+
+    <div id="main">
+        <h3>Aktionen</h3>
+        <button id="clearUser" class="mdc-button">Alle Benutzer abmelden (b)</button>
+        <button id="clearTrace" class="mdc-button">Alle Traces löschen (t)</button>
+        <button id="clearCount" class="mdc-button">Alle Counts löschen (c)</button>
+    </div>
+
+    <script type="module">
+        import { UserClient } from './user/driver/rest.js'
+
+        let userClient = new UserClient();
+
+        const clearUser = document.querySelector('#clearUser');
+        const clearTrace = document.querySelector('#clearTrace');
+        const clearCount = document.querySelector('#clearCount');
+
+        clearUser.addEventListener('click', e => {
+            userClient.deleteAll().catch(err => {
+                alert(err);
+            });
+        });
+
+        clearTrace.addEventListener('click', e => {
+            console.log('clear user');
+        });
+
+        clearCount.addEventListener('click', e => {
+            console.log('clear user');
+        });
+
+        document.onkeyup = e => {
+            if (e.key === 'b') {
+                clearUser.focus();
+                clearUser.click();
+            }
+            if (e.key === 't') {
+                clearTrace.focus();
+                clearTrace.click();
+            }
+            if (e.key === 'c') {
+                clearCount.focus();
+                clearCount.click();
+            }
+        };
+    </script>
+</body>
+
+</html>

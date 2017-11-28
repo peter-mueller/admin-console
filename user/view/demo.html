@@ -1,0 +1,41 @@
+<head>
+    <script type="module" src="./user-list.js"></script>
+    <style>
+        body {
+            background-color: blue;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #container {
+            display: block;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        h2 {
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2>User Liste</h2>
+        <user-list id="list"></user-list>
+
+        <h2>User Liste leer</h2>
+        <user-list id="list2"></user-list>
+    </div>
+</body>
+
+<script type="module">
+    document.querySelector('#list').users = [
+        { name: 'Peter' },
+        { name: 'Christian' },
+        { name: 'Andreas' },
+        { name: 'Markus' },
+    ];
+    
+    document.querySelector('#list2').users = [];
+</script>
