@@ -35,10 +35,14 @@
         import { CountClient } from './driver/rest.js';
 
         const list = document.querySelector('#list');
-        list.counts = [
-            { clientName: 'asdf', amount: 2 },
-            { clientName: 'asdf', amount: 2 },
-        ];
+
+		const client = new CountClient();
+        client.findAll().then(result => {
+			console.log(result);
+			list.counts=result.data.allCounts;
+		});
+
+
     </script>
 </body>
 

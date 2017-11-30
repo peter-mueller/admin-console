@@ -6,7 +6,7 @@ export class CountClient {
     }
 
     findAll() {
-        return fetch('///').then(res => {
+        return fetch('http://localhost:8080/chat-core/graphql?query={allCounts{id clientName receivedmessages}}').then(res => {
             return res.json();
         });
     }

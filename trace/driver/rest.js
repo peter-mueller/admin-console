@@ -1,6 +1,6 @@
 export class TraceClient {
-    findAllMessages() {
-        return fetch('kkjj').then(res => {
+    findAll() {
+        return fetch('http://localhost:8080/chat-core/graphql?query={allTraces{id clientthreadname serverthreadname message}}').then(res => {
             return res.json();
         });
     }

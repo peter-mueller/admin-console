@@ -23,13 +23,15 @@ const template = val => html`
 
 <table>
 <tr>
-  <th align="left">Client Name</th>
+  <th align="left">ID</th>
+  <th align="center">Client Name</th>
   <th align="center">Anzahl Request</th> 
 </tr>
 ${val.map(count => html`
 <tr>
+  <td id="id">${count.id}</td>
   <td id="name">${count.clientName}</td>
-  <td align="center" id="amount">${count.amount}</td> 
+  <td align="center" id="amount">${count.receivedmessages}</td> 
 </tr>
 `)}
 

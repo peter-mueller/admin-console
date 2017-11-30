@@ -35,7 +35,12 @@
         import { TraceClient } from './driver/rest.js';
 
         const list = document.querySelector('#list');
-        list.traces = [];
+
+		const client = new TraceClient();
+        client.findAll().then(result => {
+			console.log(result);
+			list.traces=result.data.allTraces;
+		});
     </script>
 </body>
 

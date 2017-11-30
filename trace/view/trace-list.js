@@ -7,7 +7,7 @@ const template = val => html`
     }
     div {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         padding: 1rem;
     }
     div + div {
@@ -15,9 +15,10 @@ const template = val => html`
     }
 </style>
 
-    ${val.map(user => html`
-    <div>
-        <span id="name">&#9749; ${user.name}</span>
+    ${val.map(trace => html`
+    <div id="traceentry">
+    	<span id="title">${trace.id} - <b>${trace.clientthreadname} (${trace.serverthreadname})</b></span>
+        <span id="message">${trace.message}</span>
     </div>
     `)}
 

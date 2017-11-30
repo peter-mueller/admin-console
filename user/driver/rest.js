@@ -1,6 +1,6 @@
 export class UserClient {
     findAll() {
-        return fetch('/users').then(res => {
+        return fetch('http://localhost:8080/chat-core/graphql?query={allUsers{name}}').then(res => {
             return res.json();
         });
     }

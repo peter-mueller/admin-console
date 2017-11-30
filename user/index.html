@@ -33,12 +33,12 @@
         import { UserClient } from './driver/rest.js';
 
         const list = document.querySelector('#list');
-        list.users = [
-            { name: 'Peter' },
-            { name: 'Christian' },
-            { name: 'Andreas' },
-            { name: 'Markus' },
-        ];
+
+		const client = new UserClient();
+        client.findAll().then(result => {
+			console.log(result);
+			list.users=result.data.allUsers;
+		});
     </script>
 </body>
 
