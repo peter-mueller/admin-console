@@ -6,9 +6,10 @@ export class TraceClient {
     }
 
     deleteAll() {
-        return fetch('kjkj',
-            {
-                method: 'DELETE'
-            });
+    	const data = {query: "mutation={clearTraces}"}
+        return fetch("http://localhost:8080/chat-core/graphql", {
+            method: 'POST',
+            body: JSON.stringify(data)
+        });
     }
 }

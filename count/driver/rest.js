@@ -12,8 +12,10 @@ export class CountClient {
     }
 
     deleteAll() {
-        return fetch("'''", {
-            method: 'DELETE'
+    	const data = {"query": "mutation={clearCounts}"}
+        return fetch("http://localhost:8080/chat-core/graphql", {
+            method: 'POST',
+            body: JSON.stringify(data)
         });
     }
 }

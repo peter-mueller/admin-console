@@ -43,30 +43,50 @@
         <button id="clearUser" class="mdc-button">Alle Benutzer abmelden (b)</button>
         <button id="clearTrace" class="mdc-button">Alle Traces löschen (t)</button>
         <button id="clearCount" class="mdc-button">Alle Counts löschen (c)</button>
+        <button id="clearAll" class="mdc-button">Alles löschen (a)</button>
     </div>
 
     <script type="module">
         import { UserClient } from './user/driver/rest.js'
+		import { TraceClient } from './trace/driver/rest.js'
+		import { CountClient } from './count/driver/rest.js'
 
-        let userClient = new UserClient();
-
+        const userClient = new UserClient();
+		const traceClient = new TraceClient();
+		const countClient = new CountClient();
+		
         const clearUser = document.querySelector('#clearUser');
         const clearTrace = document.querySelector('#clearTrace');
         const clearCount = document.querySelector('#clearCount');
+        const clearAll = document.querySelector('#clearAll');
 
         clearUser.addEventListener('click', e => {
-            userClient.deleteAll().catch(err => {
-                alert(err);
-            });
+			console.log("clearUser");
+            userClient.deleteAll();
+			alert("Alle User wurden gelöscht.");
         });
 
         clearTrace.addEventListener('click', e => {
-            console.log('clear user');
+			console.log("clearTrace");
+            traceClient.deleteAll();
+			alert("Die TraceDB wurde geleert.");
         });
 
         clearCount.addEventListener('click', e => {
-            console.log('clear user');
+			console.log("clearCount");
+            countClient.deleteAll();
+			alert("Die CountDB wurde geleert.");
         });
+
+        clearAll.addEventListener('click', e => {
+			console.log("clearAll");
+            traceClient.deleteAll();
+            userClient.deleteAll();
+            countClient.deleteAll();
+			alert("Alle Daten wurden gelöscht.");
+        });
+
+		
 
         document.onkeyup = e => {
             if (e.key === 'b') {
@@ -78,6 +98,10 @@
                 clearTrace.click();
             }
             if (e.key === 'c') {
+                clearCount.focus();
+                clearCount.click();
+            }
+			if (e.key === 'a') {
                 clearCount.focus();
                 clearCount.click();
             }

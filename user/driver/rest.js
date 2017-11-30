@@ -6,8 +6,10 @@ export class UserClient {
     }
 
     deleteAll() {
-        return fetch("/", {
-            method: 'DELETE'
+    	const data = {query: "mutation={clearUsers}"}
+        return fetch("http://localhost:8080/chat-core/graphql", {
+            method: 'POST',
+            body: JSON.stringify(data)
         });
     }
 }
